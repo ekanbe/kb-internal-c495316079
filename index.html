@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="googlebot" content="noindex, nofollow">
+<title>日本KFC ファクトブック</title>
+<style>
+:root {
+  --kfc-red: #E4002B;
+  --kfc-red-dark: #B30022;
+  --navy: #1F3864;
+  --gray-900: #1a1a1a;
+  --gray-700: #4a4a4a;
+  --gray-500: #888;
+  --gray-200: #E5E5E5;
+  --gray-100: #F5F5F5;
+  --gold: #C9A227;
+  --green: #1B5E20;
+  --bg-cream: #FFF8F0;
+}
+* { box-sizing: border-box; }
+body {
+  font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+  line-height: 1.85;
+  color: var(--gray-900);
+  background: var(--bg-cream);
+  margin: 0;
+}
+.container { max-width: 1100px; margin: 0 auto; background: #fff; min-height: 100vh; box-shadow: 0 0 40px rgba(0,0,0,0.06); }
+
+.hero {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--kfc-red) 100%);
+  color: #fff;
+  padding: 36px 40px 28px;
+}
+.hero .label { display: inline-block; background: rgba(255,255,255,0.2); padding: 4px 12px; border-radius: 16px; font-size: 11px; letter-spacing: 0.1em; margin-bottom: 10px; }
+.hero h1 { margin: 0; font-size: 26px; line-height: 1.4; }
+.hero .subtitle { margin-top: 8px; font-size: 14px; opacity: 0.95; }
+.hero .meta { margin-top: 16px; font-size: 11px; opacity: 0.9; line-height: 1.7; }
+
+nav.toc {
+  background: #fff;
+  border-bottom: 1px solid var(--gray-200);
+  padding: 16px 40px;
+  font-size: 12px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+nav.toc strong { display: block; margin-bottom: 6px; color: var(--gray-700); font-size: 11px; letter-spacing: 0.1em; }
+nav.toc a { color: var(--navy); text-decoration: none; margin-right: 14px; padding: 2px 0; display: inline-block; }
+nav.toc a:hover { color: var(--kfc-red); text-decoration: underline; }
+
+section { padding: 28px 40px; border-bottom: 1px solid var(--gray-200); }
+section:last-child { border-bottom: none; }
+
+h2 { color: var(--navy); font-size: 22px; border-left: 6px solid var(--kfc-red); padding: 4px 0 4px 14px; margin: 0 0 18px; }
+h3 { color: var(--navy); font-size: 16px; border-bottom: 2px solid var(--gray-200); padding-bottom: 6px; margin: 24px 0 12px; }
+h4 { color: var(--kfc-red-dark); font-size: 13px; margin: 14px 0 6px; }
+
+p { margin: 8px 0; font-size: 14px; }
+
+table { width: 100%; border-collapse: collapse; margin: 12px 0 18px; font-size: 13px; }
+th { background: var(--navy); color: #fff; padding: 8px 10px; text-align: left; font-weight: 600; border: 1px solid var(--navy); }
+td { padding: 8px 10px; border: 1px solid var(--gray-200); vertical-align: top; }
+tr:nth-child(even) td { background: #FAFAFA; }
+
+ul { padding-left: 22px; margin: 8px 0; }
+ul li { margin-bottom: 5px; font-size: 14px; }
+
+a.inline { color: var(--navy); text-decoration: none; border-bottom: 1px dotted var(--navy); }
+a.inline:hover { color: var(--kfc-red); border-bottom-color: var(--kfc-red); }
+
+.cite { font-size: 11px; color: var(--gray-500); margin-left: 4px; }
+.cite a { color: var(--gray-500); text-decoration: none; border-bottom: 1px dotted var(--gray-500); }
+.cite a:hover { color: var(--kfc-red); border-bottom-color: var(--kfc-red); }
+
+.label-fact, .label-public, .label-guess, .label-unknown {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 1px 7px;
+  border-radius: 3px;
+  margin-right: 5px;
+  vertical-align: middle;
+  letter-spacing: 0.05em;
+}
+.label-fact { background: var(--green); color: #fff; }
+.label-public { background: var(--navy); color: #fff; }
+.label-guess { background: var(--gold); color: #fff; }
+.label-unknown { background: var(--gray-500); color: #fff; }
+
+.note {
+  background: #FFFBEC;
+  border-left: 4px solid var(--gold);
+  padding: 12px 18px;
+  margin: 14px 0;
+  font-size: 13px;
+  border-radius: 4px;
+}
+.note-title { font-weight: 700; color: #856404; margin-bottom: 4px; font-size: 12px; }
+
+.quote {
+  background: #F5F8FC;
+  border-left: 4px solid var(--navy);
+  padding: 14px 20px;
+  margin: 12px 0;
+  font-style: italic;
+  color: var(--gray-700);
+  font-size: 13px;
+  border-radius: 4px;
+}
+.quote-source { display: block; text-align: right; font-size: 10px; color: var(--gray-500); margin-top: 6px; font-style: normal; }
+.quote-source a { color: var(--gray-500); text-decoration: underline; }
+
+.timeline { position: relative; padding-left: 28px; margin: 12px 0; border-left: 2px solid var(--gray-200); }
+.timeline-item { position: relative; margin-bottom: 10px; padding-left: 10px; font-size: 13px; }
+.timeline-item::before { content: ''; position: absolute; left: -34px; top: 7px; width: 10px; height: 10px; border-radius: 50%; background: var(--kfc-red); box-shadow: 0 0 0 3px #fff; }
+.timeline-date { font-weight: 700; color: var(--kfc-red); margin-right: 8px; }
+
+.org { background: #FAFAFA; border-radius: 6px; padding: 16px 20px; margin: 12px 0; font-size: 12px; line-height: 2; }
+.org-target { background: #FFE3E3; padding: 1px 8px; border-radius: 3px; color: var(--kfc-red-dark); font-weight: 700; }
+.org-estimate { background: #FFF8E1; padding: 1px 8px; border-radius: 3px; color: #856404; border: 1px dashed var(--gold); }
+
+.legend {
+  background: var(--gray-100);
+  padding: 14px 20px;
+  border-radius: 6px;
+  font-size: 12px;
+  margin: 18px 0;
+}
+.legend-title { font-weight: 700; color: var(--gray-700); margin-bottom: 6px; }
+.legend ul { padding-left: 18px; margin: 4px 0; }
+.legend li { margin-bottom: 3px; }
+
+.tweet {
+  border: 1px solid var(--gray-200);
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin: 10px 0;
+  background: #fff;
+  font-size: 13px;
+  border-left: 4px solid var(--green);
+}
+.tweet.viral { border-left-color: var(--gold); background: #FFFBEC; }
+.tweet-handle { font-weight: 700; color: #000; font-size: 12px; }
+.tweet-handle::before { content: '𝕏 '; }
+.tweet-date { color: var(--gray-500); font-size: 11px; margin-left: 6px; }
+.tweet-body { margin: 6px 0; line-height: 1.7; }
+.tweet-metrics { font-size: 11px; color: var(--gray-500); padding-top: 4px; border-top: 1px solid var(--gray-100); }
+.tweet a.tweet-link { color: var(--gray-500); text-decoration: none; font-size: 10px; margin-left: 8px; border-bottom: 1px dotted var(--gray-500); }
+.tweet a.tweet-link:hover { color: var(--kfc-red); border-bottom-color: var(--kfc-red); }
+
+.kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 14px 0; }
+.kpi { background: linear-gradient(135deg, var(--navy) 0%, #2C4F8B 100%); color: #fff; padding: 14px; border-radius: 8px; text-align: center; }
+.kpi-num { font-size: 20px; font-weight: 700; color: #FFD96A; display: block; line-height: 1.2; }
+.kpi-label { font-size: 11px; margin-top: 4px; opacity: 0.85; }
+.kpi.red { background: linear-gradient(135deg, var(--kfc-red) 0%, var(--kfc-red-dark) 100%); }
+@media (max-width: 800px) { .kpi-row { grid-template-columns: repeat(2, 1fr); } }
+
+.sources-block {
+  background: var(--gray-100);
+  padding: 16px 22px;
+  border-radius: 6px;
+  margin: 12px 0;
+  font-size: 12px;
+}
+.sources-block h4 { margin-top: 0; color: var(--gray-700); border-bottom: 1px solid var(--gray-200); padding-bottom: 4px; }
+.sources-block ul { padding-left: 18px; columns: 2; column-gap: 24px; }
+.sources-block li { break-inside: avoid; margin-bottom: 4px; font-size: 11px; }
+.sources-block a { color: var(--navy); text-decoration: none; word-break: break-all; }
+.sources-block a:hover { text-decoration: underline; color: var(--kfc-red); }
+
+.footer { padding: 24px 40px; text-align: center; font-size: 11px; color: var(--gray-500); border-top: 2px solid var(--gray-200); }
+
+@media (max-width: 800px) {
+  body { line-height: 1.7; }
+  section { padding: 20px 16px; }
+  .hero { padding: 24px 20px 20px; }
+  .hero h1 { font-size: 20px; }
+  .hero .subtitle { font-size: 12px; }
+  .hero .meta { font-size: 10px; }
+  h2 { font-size: 18px; padding-left: 10px; border-left-width: 5px; margin-bottom: 14px; }
+  h3 { font-size: 14px; margin: 18px 0 10px; }
+  h4 { font-size: 12px; }
+  p, ul li { font-size: 13px; }
+  nav.toc { padding: 10px 16px; font-size: 11px; }
+  nav.toc a { margin-right: 10px; padding: 4px 8px 4px 0; display: inline-block; }
+  .sources-block { padding: 12px 14px; }
+  .sources-block ul { columns: 1; padding-left: 16px; }
+  .sources-block li { font-size: 12px; }
+  .legend { padding: 12px 14px; }
+  .quote { padding: 10px 14px; font-size: 12px; }
+  .note { padding: 10px 14px; font-size: 12px; }
+  .timeline { padding-left: 22px; }
+  .timeline-item { font-size: 12px; }
+  .org { padding: 12px 14px; font-size: 11px; line-height: 1.9; }
+  /* テーブルを横スクロール可能に */
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    font-size: 12px;
+  }
+  table th, table td { white-space: normal; min-width: 80px; }
+  /* タッチターゲットを広く */
+  a.inline, nav.toc a { padding: 2px 0; }
+  .tweet { padding: 10px 12px; font-size: 12px; }
+  .tweet-body { font-size: 12px; }
+  .footer { padding: 18px 16px; }
+}
+@media print {
+  body { background: #fff; }
+  .container { box-shadow: none; max-width: none; }
+  nav.toc { display: none; }
+  section { page-break-inside: avoid; }
+  .hero { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="hero">
+  <div class="label">FACT BOOK</div>
+  <h1>日本KFC ファクトブック</h1>
+  <div class="subtitle">公開情報・一次情報（IR・公式リリース）に絞ってまとめた事実集</div>
+  <div class="meta">
+    作成: 2026/5/10｜マルイ物産株式会社｜神戸 慧士<br>
+    対象: 日本KFCホールディングス㈱／日本ケンタッキー・フライド・チキン㈱
+  </div>
+</div>
+
+<nav class="toc">
+  <strong>目次</strong>
+  <a href="#sec1">① 経営体制の動き</a>
+  <a href="#sec2">② 中期経営計画（IR一次情報）</a>
+  <a href="#sec3">③ 直近の動き</a>
+  <a href="#sec4">④ 店舗網・業績</a>
+  <a href="#sec5">⑤ 商品開発の組織</a>
+  <a href="#sec6">⑥ 神尾様の公開情報</a>
+  <a href="#sec7">⑦ KFCのドリンク履歴</a>
+  <a href="#sec8">⑧ サステナビリティ・品質</a>
+  <a href="#sec9">⑨ 出典一覧</a>
+</nav>
+
+<section>
+<div class="legend">
+  <div class="legend-title">📌 本資料の作成方針と表記ルール</div>
+  <ul>
+    <li><span class="label-fact">事実</span> KFC公式IR・公式プレスリリース・大手メディアの一次情報で確認できたもの</li>
+    <li><span class="label-public">公開情報</span> 公的な場で公開されているが解釈に注意が必要なもの（インタビュー発言・採用ページ等）</li>
+    <li><span class="label-guess">推測</span> 私の解釈であることを明示。出典で確認できていない</li>
+    <li><span class="label-unknown">未確認</span> 取得できなかった情報</li>
+  </ul>
+  <p style="margin: 10px 0 0; font-size: 12px;">文中の主張には可能な限り出典リンクを付けてあります（クリックで原典に飛べます）。</p>
+</div>
+</section>
+
+<section id="sec1">
+<h2>① 経営体制の動き（2024〜2026）</h2>
+
+<div class="timeline">
+<div class="timeline-item"><span class="timeline-date">2024/5/20</span><span class="label-fact">事実</span>三菱商事が保有35.12%株（約400億円）をカーライルへ売却発表。全体買収額1,300億円。<span class="cite">出典: <a href="https://www.mitsubishicorp.com/jp/ja/news/release/2024/0000053875.html" target="_blank">三菱商事プレスリリース</a> ／ <a href="https://www.nikkei.com/article/DGXZQOUC2021I0Q4A520C2000000/" target="_blank">日経</a></span></div>
+<div class="timeline-item"><span class="timeline-date">2024/9/18</span><span class="label-fact">事実</span>東証上場廃止（証券コード9873）。<span class="cite">出典: <a href="https://www.marr.jp/genre/study/marr_report/entry/53646" target="_blank">M&A総研</a></span></div>
+<div class="timeline-item"><span class="timeline-date">2024/10</span><span class="label-fact">事実</span>新社長：遠藤久氏（マクドナルド・すかいらーく出身）。<span class="cite">出典: <a href="https://toyokeizai.net/articles/-/759416" target="_blank">東洋経済</a></span></div>
+<div class="timeline-item"><span class="timeline-date">2026/3/9</span><span class="label-fact">事実</span>「KFC : THE NEXT CHAPTER」第二創業を発表。<span class="cite">出典: <a href="https://japan.kfc.co.jp/news_release/8129" target="_blank">KFCプレスリリース</a></span></div>
+<div class="timeline-item"><span class="timeline-date">2026/4/1</span><span class="label-fact">事実</span>遠藤氏が代表権ある会長へ／名嶋専務が新社長に昇格。<span class="cite">出典: <a href="https://www.ryutsuu.biz/strategy/s040149.html" target="_blank">流通ニュース</a></span></div>
+</div>
+
+<div class="quote">
+日本KFCに約1,000カ所の新店舗候補地がある。
+<span class="quote-source">— カーライル幹部 ／ <a href="https://www.nikkei.com/article/DGXZQOUC238EZ0T21C24A0000000/" target="_blank">日経インタビュー</a></span>
+</div>
+</section>
+
+<section id="sec2">
+<h2>② 中期経営計画 ─ IR一次情報そのまま</h2>
+
+<p>以下は <a class="inline" href="https://japan.kfc.co.jp/cmr/KFCreport2025_ALL.pdf" target="_blank">KFC COMMUNICATION REPORT 2025</a>（2025/11/28発行）から直接引用した内容です。<span class="label-fact">事実</span></p>
+
+<h3>Mission・Vision</h3>
+<table>
+<tbody>
+<tr><td style="width:120px; font-weight:700;">MISSION</td><td>おいしさ、しあわせ創造</td></tr>
+<tr><td style="font-weight:700;">VISION</td><td>こだわりの食体験で、お客さまの期待を超え続ける</td></tr>
+</tbody>
+</table>
+<p class="cite">出典: COMMUNICATION REPORT 2025 P7（<a href="https://japan.kfc.co.jp/cmr/KFCreport2025_P6-12.pdf" target="_blank">P6-12 PDF</a>）</p>
+
+<h3>戦略の5本柱</h3>
+<table>
+<thead><tr><th style="width:50px;">#</th><th>項目</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>メニューポートフォリオ強化</td></tr>
+<tr><td>2</td><td>KFCならではの顧客体験向上</td></tr>
+<tr><td>3</td><td>FC連携による店舗網拡大</td></tr>
+<tr><td>4</td><td>競争性のあるコスト構造</td></tr>
+<tr><td>5</td><td>成長を支える人財基盤と組織改革</td></tr>
+</tbody>
+</table>
+<p class="cite">出典: COMMUNICATION REPORT 2025 P7（<a href="https://japan.kfc.co.jp/cmr/KFCreport2025_P6-12.pdf" target="_blank">P6-12 PDF</a>）</p>
+
+<h3>原典引用：「新生KFC」への課題認識（マーケティング担当の発言）</h3>
+
+<div class="quote">
+着任時に感じた課題は、KFCのブランド価値をお客さまへ統合的に伝えきれていないことでした。広告、新商品、PR、WEB、店舗などのあらゆるタッチポイントが十分に連動しておらず、「ブランド体験」として一貫したメッセージを届けることができていなかったのです。
+<span class="quote-source">— COMMUNICATION REPORT 2025 P8 ／ <a href="https://japan.kfc.co.jp/cmr/KFCreport2025_P6-12.pdf" target="_blank">原典PDF</a></span>
+</div>
+
+<div class="quote">
+現在は「メニューポートフォリオの強化」を軸に、商品開発を中心とした改革を推進中です。今年は新たな取り組みとして「ケンタの鶏竜田バーガー」を投入し、来年度には更なる本格導入を予定しています。既存商品の刷新にとどまらず、スナックやライトミールなど新たな食シーンを創出し、多様なニーズに応えるブランドへの進化を目指しています。
+<span class="quote-source">— COMMUNICATION REPORT 2025 P8 ／ <a href="https://japan.kfc.co.jp/cmr/KFCreport2025_P6-12.pdf" target="_blank">原典PDF</a></span>
+</div>
+
+<h3>第二創業3本柱（2026/3/9 発表会）</h3>
+<table>
+<thead><tr><th style="width:140px;">柱</th><th>内容</th></tr></thead>
+<tbody>
+<tr><td><strong>柱1：メニューへの挑戦</strong></td><td>チキン拡充／バーガー比率30%→50%目標／2026秋にバーガー大幅リニューアル／ドリンク・サイド新提案</td></tr>
+<tr><td><strong>柱2：次世代モデル店舗</strong></td><td>2030年に1,700店体制（現1,301店）／東名阪人口集積地に集中／路面店・SC・小型を多様化</td></tr>
+<tr><td><strong>柱3：デジタル強化</strong></td><td>KFCアプリ中核化／リワード改革／KFC ID×POS×CDP連携／博報堂と顧客進化型CRM</td></tr>
+</tbody>
+</table>
+<p class="cite">出典: <a href="https://japan.kfc.co.jp/news_release/8129" target="_blank">KFCプレスリリース</a> ／ <a href="https://www.ssnp.co.jp/foodservice/664991/" target="_blank">食品産業新聞</a></p>
+</section>
+
+<section id="sec3">
+<h2>③ 直近の動き（2026年1〜5月）</h2>
+
+<table>
+<thead><tr><th style="width:90px;">日付</th><th>動き</th><th style="width:80px;">出典</th></tr></thead>
+<tbody>
+<tr><td>2026/2/4</td><td>デリバリーが店頭同一価格・最低注文金額撤廃（全国約850店）</td><td><a href="https://japan.kfc.co.jp/news_release/" target="_blank">公式</a></td></tr>
+<tr><td>2026/3/9</td><td>「KFC : THE NEXT CHAPTER」第二創業発表／新タグライン「しあわせに、ガブッ。」／新アンバサダー佐藤栞里</td><td><a href="https://japan.kfc.co.jp/news_release/8129" target="_blank">公式</a></td></tr>
+<tr><td>2026/3/18</td><td>「オリジナルチキンバーガーズ」発売（43年ぶり定番再開発・一部エリア限定6種）</td><td><a href="https://japan.kfc.co.jp/news_release/8126" target="_blank">公式</a></td></tr>
+<tr><td>2026/3/25</td><td>「鶏竜田バーガー」復活＋「香味ネギソース」新発売</td><td><a href="https://japan.kfc.co.jp/news_release/8133" target="_blank">公式</a></td></tr>
+<tr><td>2026/4/3</td><td>次世代モデル1号店「相模原大野台店」オープン</td><td><a href="https://japan.kfc.co.jp/news_release/8140" target="_blank">公式</a></td></tr>
+<tr><td><strong>2026/4/8</strong></td><td><strong>「ちゅる〜りぃ」発売</strong>（14年ぶりゼリードリンク・¥440・ブルーハワイ／ピンククランベリーの2フレーバー）</td><td><a href="https://japan.kfc.co.jp/news_release/8136" target="_blank">公式</a></td></tr>
+<tr><td>2026/4/8</td><td>「レモン香るパリパリ旨塩チキン」数量限定</td><td><a href="https://japan.kfc.co.jp/news_release/" target="_blank">公式</a></td></tr>
+</tbody>
+</table>
+
+<h3>次世代モデル店舗（相模原大野台店）の特徴</h3>
+<ul>
+<li>ダブルドライブスルー（日本KFC初）</li>
+<li>「つくり置きせず・オーダー後製造」スタイル</li>
+<li>バーガー製造能力 1時間60個→360個（6倍）</li>
+<li>テストキッチン機能：5時間帯（モーニング／ランチ／スナック／ディナー/レイトナイト）</li>
+<li>改装前比 売上2倍を目標</li>
+<li>「ちゅる〜りぃ」を先行販売</li>
+</ul>
+<p class="cite">出典: <a href="https://japan.kfc.co.jp/news_release/8140" target="_blank">KFC公式</a> ／ <a href="https://www.ssnp.co.jp/foodservice/671995/" target="_blank">食品産業新聞</a></p>
+
+<h3>X（旧Twitter）での反応 ─ 直近2品が大バズ</h3>
+
+<h4>① ちゅる〜りぃ（@KFC_jp 公式投稿）</h4>
+<div class="kpi-row">
+<div class="kpi"><span class="kpi-num">6,440万</span><div class="kpi-label">Views（4/21投稿）</div></div>
+<div class="kpi red"><span class="kpi-num">85,550</span><div class="kpi-label">RT</div></div>
+<div class="kpi"><span class="kpi-num">28,671</span><div class="kpi-label">Likes</div></div>
+<div class="kpi"><span class="kpi-num">8〜9割</span><div class="kpi-label">ポジティブ反応</div></div>
+</div>
+<p style="font-size:13px;">公式アカウント @KFC_jp（フォロワー326万人）が「ちゅる〜りぃ」キャラ乗っ取り運用＋リポストで2,000名無料券キャンペーンを実施。<span class="label-fact">事実</span></p>
+
+<div class="tweet">
+<span class="tweet-handle">@disneyPorsche</span><span class="tweet-date">2026/4/8（発売初日）</span>
+<div class="tweet-body">ケンタッキーフライドチキン新作…新感覚のゼリードリンク #ちゅる〜りぃ ぷるっとした食感のレモンゼリーが入っててすっぱいのと混ぜてのんだら美味しい✨🍋…可愛くて美味しかったからまた飲もう😍</div>
+<div class="tweet-metrics">❤ 290 <a class="tweet-link" href="https://x.com/disneyPorsche/status/2041716661926162647" target="_blank">原文を見る</a></div>
+</div>
+
+<p class="cite">出典: <a href="https://x.com/KFC_jp/status/2046604874939314464" target="_blank">@KFC_jp 4/21投稿（最大バズ）</a></p>
+
+<h4>② 鶏竜田バーガー（2026/3/25 復活）</h4>
+<div class="tweet viral">
+<span class="tweet-handle">@hakubaek31</span><span class="tweet-date">2026/3/31</span>
+<div class="tweet-body">なんちゅうもんを食わせてくれたんや…。こんな旨い鶏竜田バーガー香味ネギソースは食べたことない…</div>
+<div class="tweet-metrics">❤ 1,162 ／ 👁 121,826 <a class="tweet-link" href="https://x.com/hakubaek31/status/2038191659868201188" target="_blank">原文を見る</a></div>
+</div>
+
+<div class="tweet">
+<span class="tweet-handle">@masaon1206</span><span class="tweet-date">2026/5/8（マック食べ比べ）</span>
+<div class="tweet-body">マックのチキンタツタとケンタの鶏竜田バーガーの食べ比べ…<strong>鶏肉がちゃんと竜田なのはケンタ</strong>、全体的に安定して美味しいのはマック</div>
+</div>
+
+<p style="font-size:13px;">公式投稿（3/30 鶏竜田復活祭）も Likes 15,446／RT 74,581／Views 101万を記録。<span class="label-fact">事実</span></p>
+<p class="cite">出典: <a href="https://x.com/KFC_jp/status/2038632341917077643" target="_blank">@KFC_jp 鶏竜田復活祭投稿</a></p>
+
+<h4>③ @KFC_jp 公式タイムライン直近上位投稿</h4>
+<table>
+<thead><tr><th style="width:50px;">順位</th><th style="width:80px;">投稿日</th><th>内容</th><th style="width:80px;">Likes</th><th style="width:80px;">RT</th><th style="width:80px;">Views</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>5/8</td><td>原神コラボティザー</td><td>183,336</td><td>42,286</td><td>1,137万</td></tr>
+<tr><td>2</td><td>5/7</td><td>原神コラボ招待状</td><td>50,484</td><td>16,794</td><td>702万</td></tr>
+<tr><td>3</td><td>4/21</td><td><strong>ちゅる〜りぃGAW</strong></td><td>28,671</td><td><strong>85,550</strong></td><td><strong>6,440万</strong></td></tr>
+<tr><td>4</td><td>3/30</td><td><strong>鶏竜田復活祭</strong></td><td>15,446</td><td>74,581</td><td>101万</td></tr>
+<tr><td>5</td><td>4/22</td><td>ちゅる〜りぃGAW（16日目）</td><td>10,157</td><td>51,268</td><td>71万</td></tr>
+</tbody>
+</table>
+<p class="cite">出典: <a href="https://x.com/KFC_jp" target="_blank">@KFC_jp 公式タイムライン</a>（2026/5月時点）</p>
+</section>
+
+<section id="sec4">
+<h2>④ 店舗網・業績</h2>
+
+<h3>店舗網（2025年9月末時点）</h3>
+<table>
+<tbody>
+<tr><td style="width:200px; font-weight:700;">国内総店舗数</td><td>1,301店（世界KFCブランド内 第3位）</td></tr>
+<tr><td style="font-weight:700;">関東</td><td>510店（最大）</td></tr>
+<tr><td style="font-weight:700;">関西</td><td>213店</td></tr>
+<tr><td style="font-weight:700;">九州沖縄</td><td>179店</td></tr>
+<tr><td style="font-weight:700;">2030年構想</td><td>1,700店体制（+399店）</td></tr>
+</tbody>
+</table>
+<p class="cite">出典: <a href="https://www.ryutsuu.biz/strategy/s030941.html" target="_blank">流通ニュース</a> ／ <a href="https://japan.kfc.co.jp/cmr/KFCreport2025_P6-12.pdf" target="_blank">COMMUNICATION REPORT 2025 P11</a></p>
+
+<h3>業績の推移</h3>
+<ul>
+<li>2024年3月期：営業利益 58.6億円（前年比+61.9%）／純利益 43.3億円（同+74.0%）</li>
+<li>2024年4-6月期：営業利益 ▲73%（値上げによる客離れ）</li>
+<li>オリジナルチキン価格：260円（2022年）→290円（23年3月）→310円（23年10月）</li>
+<li>既存店客数 91.4（減少）／客単価 109.0（値上げで維持）</li>
+<li>テイクアウト約7割／イートイン3割 → 4割が2031年目標</li>
+</ul>
+<p class="cite">出典: <a href="https://japan.kfc.co.jp/ir/library" target="_blank">日本KFC IRライブラリー</a> ／ <a href="https://www.nikkei.com/article/DGXZQOUC0694J0W6A300C2000000/" target="_blank">日経</a></p>
+
+<h3>デジタル資産</h3>
+<table>
+<tbody>
+<tr><td style="width:200px;">公式アプリ累計DL</td><td>2,300万人超</td></tr>
+<tr><td>LINE公式</td><td>2,400万人超</td></tr>
+<tr><td>会員数</td><td>720万人</td></tr>
+<tr><td>X（旧Twitter）</td><td>3,269,374人（@KFC_jp）</td></tr>
+<tr><td>Web月間PV</td><td>約3,000万</td></tr>
+</tbody>
+</table>
+
+<div class="quote">
+AIを活用した顧客コミュニケーション施策に注力しており、既存顧客の売上は着実に伸長しています。特に顧客個別に最適化したデジタルマーケティングにより、貢献売上は月あたり約1.3倍にまで成長しました。
+<span class="quote-source">— COMMUNICATION REPORT 2025 P9 ／ <a href="https://japan.kfc.co.jp/cmr/KFCreport2025_P6-12.pdf" target="_blank">原典PDF</a></span>
+</div>
+</section>
+
+<section id="sec5">
+<h2>⑤ 商品開発の組織</h2>
+
+<p>以下はIR一次情報（<a class="inline" href="https://finance-frontend-pc-dist.west.edge.storage-yahoo.jp/disclosure/20240213/20240119516997.pdf" target="_blank">2024年2月13日付 組織変更・人事異動のお知らせ TDnet PDF</a>）と公開資料から把握できる範囲です。<span class="label-fact">事実</span></p>
+
+<h3>組織図（IR開示レベル）</h3>
+<div class="org">
+<strong>日本KFCホールディングス㈱</strong>　社長：判治孝之 → 2026/4 名嶋氏が社長／遠藤久氏 会長へ<br>
+└ <strong>日本ケンタッキー・フライド・チキン㈱</strong><br>
+　├ 直営営業本部　本部長：中嶋祐子（CBO 兼）<br>
+　├ 運営本部　東日本／西日本FC営業部<br>
+　├ 開発本部　本部長：小山典孝（店舗開発・オペ・建築）<br>
+　├ マーケティング本部　マーケティング部・EコマースCRM部<br>
+　└ <strong>商品本部　本部長：野村聖（取締役専務執行役員 CIO 兼）</strong><br>
+　　├ 購買部・物流管理部・品質保証部<br>
+　　└ <strong>商品開発部　部長：田代麻美子</strong><br>
+　　　└ <span class="org-estimate">商品開発1部</span>（求人情報で言及）<br>
+　　　　└ <span class="org-target">商品開発2課（神尾美沙樹様）</span>
+</div>
+
+<div class="note">
+<div class="note-title">📌 組織図の読み方に関する注記</div>
+IR資料（COMMUNICATION REPORT・組織変更お知らせPDF）は <strong>「商品開発部」までしか開示されていない</strong>。神尾様の名刺記載「商品開発1部 商品開発2課」は内部組織レベル。<span class="label-guess">推測</span> 商品開発部の中に1部・2部があり、田代部長が全体管轄／神尾様は1部の2課、というのが最も自然な読み（蓋然性 約80%）。商品開発1部の部長氏名は<span class="label-unknown">未確認</span>。
+</div>
+
+<h3>主要メンバーの公開情報</h3>
+
+<h4>野村 聖（NOMURA Kiyoshi）</h4>
+<p><strong>取締役専務執行役員 CIO ＆ 商品本部 本部長</strong>　1988年入社／1963年12月生まれ／元POS開発エンジニア → 経営企画 → 経営管理 → 2020 商品本部長 → 2022 CIO兼任。<span class="label-public">公開情報</span><span class="cite">出典: <a href="https://s.srdb.jp/9873/content-1-2.html" target="_blank">役員選任理由</a> ／ <a href="https://irbank.net/E03157/officer?m=%E9%87%8E%E6%9D%91%E8%81%96" target="_blank">IRBANK 役員履歴</a></span></p>
+
+<h4>田代 麻美子（TASHIRO Mamiko）</h4>
+<p><strong>商品開発部 部長</strong>　1992年入社／大学で醸造専攻／商品開発13年→品質保証13年（部長）→2018商品開発部長→2022品質保証部長へ→2023商品開発部長に再復帰。代表担当：辛口ハニーチキン・辛口チキンフィレバーガー。2024年12月 TBSジョブチューン出演。<span class="label-public">公開情報</span><span class="cite">出典: <a href="https://job.kfc.co.jp/rec/new/interview/interview05/" target="_blank">KFC公式採用ページ</a> ／ <a href="https://www.tbs.co.jp/jobtune/archive/202412281/" target="_blank">TBSジョブチューン</a></span></p>
+
+<div class="quote">
+「攻め」の商品開発と「守り」の品質保証。２つの大きく異なる性質の仕事を通じて、KFCブランドの成長にはその両方が必要だと学べたことは、今の私の財産です。
+<span class="quote-source">— 田代麻美子 部長 ／ <a href="https://job.kfc.co.jp/rec/new/interview/interview05/" target="_blank">KFC公式採用ページ</a></span>
+</div>
+
+<h4>津野 真名美（TSUNO Manami）</h4>
+<p><strong>商品開発部</strong>　2018年入社／月見シリーズ共同開発（神尾様と共同）／2026年「チーズにおぼれるシリーズ」を主導（5種チーズブレンド・開発2年以上・ソース50g/45g）。<span class="label-public">公開情報</span><span class="cite">出典: <a href="https://note-kfc.kfc.co.jp/n/nf422f6467a7d" target="_blank">KFC公式note</a> ／ <a href="https://gourmet.watch.impress.co.jp/docs/interview/1618611.html" target="_blank">グルメWatch</a></span></p>
+
+<h4>五十嵐 一博（IGARASHI Kazuhiro）</h4>
+<p><strong>マーケティング本部 商品開発部</strong>　月見シリーズ（2015年〜）の主担当者／「ケンタの鶏竜田バーガー」を8年がかりで開発。<span class="label-public">公開情報</span><span class="cite">出典: <a href="https://note-kfc.kfc.co.jp/n/n724cfb9c11ff" target="_blank">KFC公式note</a> ／ <a href="https://gakumado.mynavi.jp/gmd/articles/83528" target="_blank">マイナビ</a></span></p>
+
+<h4>その他の公開メンバー</h4>
+<ul>
+<li><strong>矢代さん</strong>（2012年入社）：「まるかじりケンタ」開発担当</li>
+<li><strong>村井さん</strong>（2024年入社）：「カーネルクランチポテト」（サクッとケンタシリーズ）開発担当</li>
+</ul>
+<p class="cite">出典: <a href="https://note-kfc.kfc.co.jp/n/n6699dc03c8c4" target="_blank">KFC公式note 2026/3/17</a></p>
+
+<h3>商品開発部の運用に関する公開情報</h3>
+<ul>
+<li>商品開発の絶対条件として「注文から40秒以内」のオペレーション容易性が言及されている。<span class="label-public">公開情報</span></li>
+<li>年間20-30品の開発／1品あたり開発期間 約1年。<span class="label-public">公開情報</span></li>
+<li>マーケティング部のカレンダーに紐づけた開発体制。<span class="label-public">公開情報</span></li>
+<li>R&D拠点：カーネルセンター（1992年 東京都北区に設置）。<span class="label-public">公開情報</span></li>
+</ul>
+<p class="cite">出典: <a href="https://job.kfc.co.jp/rec/new/interview/interview05/" target="_blank">KFC公式採用</a> ／ <a href="https://gourmet.watch.impress.co.jp/docs/interview/1618611.html" target="_blank">グルメWatch</a></p>
+</section>
+
+<section id="sec6">
+<h2>⑥ 神尾美沙樹様の公開情報</h2>
+
+<div class="note">
+<div class="note-title">📌 大前提</div>
+神尾様の公開情報は<strong>極めて限定的</strong>です。公式メディア露出は2024年8月29日のグルメWatch「とろ〜り月見」インタビュー1件のみ（津野真名美氏と並んで顔写真掲載）。X・SNSでの個人発信、他取材、登壇歴はいずれも確認できていません。
+</div>
+
+<h3>確定している公開情報</h3>
+<table>
+<tbody>
+<tr><td style="width:140px; font-weight:700;">所属</td><td>日本ケンタッキー・フライド・チキン株式会社<br>商品本部 商品開発部 商品開発1部 商品開発2課（名刺記載）<span class="label-fact">事実</span></td></tr>
+<tr><td style="font-weight:700;">公式露出</td><td><a class="inline" href="https://gourmet.watch.impress.co.jp/docs/interview/1618611.html" target="_blank">2024年8月29日 グルメWatch インタビュー</a> 1件のみ <span class="label-fact">事実</span></td></tr>
+<tr><td style="font-weight:700;">担当商品（公開）</td><td>2024年「とろ〜り月見」シリーズ全4品（津野真名美氏と共同担当）<span class="label-public">公開情報</span></td></tr>
+<tr><td style="font-weight:700;">SNSアカウント</td><td>個人アカウントは確認できず <span class="label-unknown">未確認</span></td></tr>
+<tr><td style="font-weight:700;">学歴・入社時期</td><td>非公開 <span class="label-unknown">未確認</span></td></tr>
+</tbody>
+</table>
+
+<h3>担当商品：とろ〜り月見シリーズ（2024年8月29日発売）</h3>
+<table>
+<thead><tr><th>商品名</th><th style="width:80px;">価格</th><th>特徴</th></tr></thead>
+<tbody>
+<tr><td>とろ〜り月見チーズフィレバーガー</td><td>540円</td><td>定番フィレ＋目玉焼き風オムレツ＋濃厚チェダー</td></tr>
+<tr><td>とろ〜り月見和風チキンカツバーガー具沢山タルタル</td><td>590円</td><td>醤油風味テリヤキ＋目玉焼き＋タルタル30g＋千切りキャベツ</td></tr>
+<tr><td>とろ〜り月見ツイスター</td><td>480円</td><td>パルメザン＋チェダー＋ベーコン旨みソース＋目玉焼き風オムレツ</td></tr>
+<tr><td>おもちカスタードの月見パイ（新商品）</td><td>300円</td><td>もちもちフィリング＋濃厚カスタード＋サクサクパイ</td></tr>
+</tbody>
+</table>
+<p class="cite">出典: <a href="https://gourmet.watch.impress.co.jp/docs/interview/1618611.html" target="_blank">グルメWatch 2024/8/29</a></p>
+
+<h3>インタビューでの発言（公開情報）</h3>
+<div class="quote">
+さらなるアップデートを意識し、"変わらないベースの月見バーガー＋新しい月見バーガーの開発"をする方針でマーケティング部と進めました。
+<span class="quote-source">— 神尾氏／津野氏共同 2024年8月 ／ <a href="https://gourmet.watch.impress.co.jp/docs/interview/1618611.html" target="_blank">グルメWatch</a></span>
+</div>
+<div class="quote">
+"とろ〜り"という月見商品のコンセプトと、お月見の和風なイメージをテーマに、おもちフィリングとカスタードクリームのパイが誕生しました。
+<span class="quote-source">— 同上 ／ <a href="https://gourmet.watch.impress.co.jp/docs/interview/1618611.html" target="_blank">グルメWatch</a></span>
+</div>
+</section>
+
+<section id="sec7">
+<h2>⑦ KFCのドリンク履歴</h2>
+
+<h3>ちゅる〜りぃ（2026年4月8日発売）</h3>
+
+<table>
+<tbody>
+<tr><td style="width:160px; font-weight:700;">発売日</td><td>2026年4月8日（次世代モデル店舗で4月3日先行販売）<span class="label-fact">事実</span></td></tr>
+<tr><td style="font-weight:700;">価格</td><td>440円（税込）</td></tr>
+<tr><td style="font-weight:700;">フレーバー</td><td>ブルーハワイ／ピンククランベリー（2種）</td></tr>
+<tr><td style="font-weight:700;">構成</td><td>カップ下層にクラッシュレモンゼリー＋レモネードソーダ。レモン果汁＋レモンピール使用</td></tr>
+<tr><td style="font-weight:700;">公式の位置付け</td><td><strong>「約14年ぶりのゼリードリンク」</strong>と公式が明言</td></tr>
+<tr><td style="font-weight:700;">公式X反応</td><td>4/21投稿が Views 6,440万・Likes 28,671・RT 85,550 を記録</td></tr>
+</tbody>
+</table>
+<p class="cite">出典: <a href="https://japan.kfc.co.jp/news_release/8136" target="_blank">KFC公式プレスリリース</a> ／ <a href="https://x.com/KFC_jp/status/2046604874939314464" target="_blank">@KFC_jp 4/21投稿</a></p>
+
+<h3>Krushers（過去ドリンクメニュー）</h3>
+
+<h4>商品ライフサイクル</h4>
+<div class="timeline">
+<div class="timeline-item"><span class="timeline-date">2008年</span>Krushers販売開始 <span class="label-fact">事実</span></div>
+<div class="timeline-item"><span class="timeline-date">2018年6月</span>10周年リニューアル「Sweets In Cups」／全1,145店中555店（48.5%）展開 <span class="label-fact">事実</span><span class="cite">出典: <a href="https://kw-note.com/food/krushers/" target="_blank">キーワードノート</a></span></div>
+<div class="timeline-item"><span class="timeline-date">2020年4-5月</span>コロナ禍で約300店の内飲食を中止／店舗限定メニュー販売中止 <span class="label-fact">事実</span></div>
+<div class="timeline-item"><span class="timeline-date">2021年頃〜</span>「ほぼ購入できない」状態に <span class="label-guess">推測</span>（公式声明なし）</div>
+<div class="timeline-item"><span class="timeline-date">2026年4月8日</span>「ちゅる〜りぃ」発売時に公式が「ゼリードリンク開発は約14年ぶり」と明言 <span class="label-fact">事実</span></div>
+</div>
+</section>
+
+<section id="sec8">
+<h2>⑧ サステナビリティ・品質基準（IR一次情報）</h2>
+
+<p>以下は <a class="inline" href="https://japan.kfc.co.jp/cmr/KFCreport2025_P13-30.pdf" target="_blank">COMMUNICATION REPORT 2025 P13-30</a> から直接引用した内容です。<span class="label-fact">事実</span></p>
+
+<h3>マテリアリティ（重要課題）</h3>
+<table>
+<thead><tr><th style="width:90px;">軸</th><th>マテリアリティ</th><th>関連ESGテーマ</th></tr></thead>
+<tbody>
+<tr><td>🍗 Food</td><td>「オリジナルチキン」のある安全・安心で豊かな食文化をつなぐ</td><td>安全・安心な食の提供／人々の健康への貢献</td></tr>
+<tr><td>🌍 Planet</td><td><strong>持続可能な原料調達と資源の循環で地球環境をつなぐ</strong></td><td>脱プラ／省資源／資源の循環／<strong>食品廃棄の削減／持続可能な原料調達</strong></td></tr>
+<tr><td>👥 People</td><td>誰もが自分らしい働き方を実現し、一人ひとりの可能性をつなぐ</td><td>働きがいのある職場／DE&I</td></tr>
+<tr><td>🏘 Community</td><td>店舗と地域の絆をつくり、あらゆる世代の活力をつなぐ</td><td>コミュニティ／地域社会への貢献</td></tr>
+</tbody>
+</table>
+<p class="cite">出典: COMMUNICATION REPORT 2025 P14-15</p>
+
+<h3>原典引用：インパクトターゲット</h3>
+<div class="quote">
+持続可能な業界をともにつくる原材料生産者やサプライヤー
+<span class="quote-source">— COMMUNICATION REPORT 2025 P15 ／ <a href="https://japan.kfc.co.jp/cmr/KFCreport2025_P13-30.pdf" target="_blank">原典PDF</a></span>
+</div>
+
+<h3>環境パフォーマンス（2024年度実績）</h3>
+<table>
+<tbody>
+<tr><td style="width:200px;">食品リサイクル率</td><td>58.5%（食品リサイクル法の業界目標50%を上回る）</td></tr>
+<tr><td>廃食油リサイクル率</td><td>100%</td></tr>
+<tr><td>CO₂排出量</td><td>76,387 t-CO₂（前年比改善）</td></tr>
+<tr><td>浮上油脂ディーゼル発電導入店</td><td>181店舗</td></tr>
+</tbody>
+</table>
+
+<h3>プラスチック包材削減タイムライン</h3>
+<ul>
+<li>2020/7〜：レジ袋バイオマス30%</li>
+<li>2021/6〜：ドリンクプラカップ廃止</li>
+<li>2021/11〜：レジ袋バイオマス50%</li>
+<li>2022/10〜：プラスプーン・フォーク → ウッド</li>
+<li>2024/6〜：ドリンキングリッド順次導入</li>
+<li>2026年までに全1,301店舗へドリンキングリッド導入（再生PET25%）</li>
+</ul>
+
+<h3>オリジナルチキンの品質基準</h3>
+<table>
+<tbody>
+<tr><td style="width:200px;">世界レベル基準（Yum!）</td><td>600項目</td></tr>
+<tr><td>登録飼育農場</td><td>175ヶ所</td></tr>
+<tr><td>国産比率</td><td>100%</td></tr>
+<tr><td>チキンスペシャリスト有資格者</td><td>19,000人</td></tr>
+<tr><td>調理工程</td><td>20工程の手づくり調理／185℃ 15分の圧力調理</td></tr>
+<tr><td>使用鶏</td><td>生後35日前後の中雛のみ（一般的には50日前後）</td></tr>
+</tbody>
+</table>
+
+<h3>人財・ダイバーシティ実績</h3>
+<table>
+<tbody>
+<tr><td style="width:200px;">女性店長比率</td><td>18.2%（2024）</td></tr>
+<tr><td>女性管理職比率</td><td>12.6%</td></tr>
+<tr><td>男性育休等取得率</td><td>94.0%</td></tr>
+<tr><td>健康診断受診率／有給5日</td><td>100%</td></tr>
+<tr><td>認定</td><td>くるみん（2020〜継続）／えるぼし3段階（2021取得）／健康経営優良法人（2022〜継続）</td></tr>
+</tbody>
+</table>
+<p class="cite">出典: COMMUNICATION REPORT 2025 P13-30（<a href="https://japan.kfc.co.jp/cmr/KFCreport2025_P13-30.pdf" target="_blank">PDF</a>）</p>
+</section>
+
+<section id="sec9">
+<h2>⑨ 出典一覧</h2>
+
+<div class="sources-block">
+<h4>🥇 一次情報（KFC公式IR PDF直接読込）</h4>
+<ul>
+<li><a href="https://japan.kfc.co.jp/cmr/KFCreport2025_ALL.pdf" target="_blank">COMMUNICATION REPORT 2025 全頁版（2025/11/28発行）</a></li>
+<li><a href="https://japan.kfc.co.jp/cmr/KFCreport2025_P6-12.pdf" target="_blank">COMMUNICATION REPORT 2025 P6-12「実行力強化と価値連鎖の創造」</a></li>
+<li><a href="https://japan.kfc.co.jp/cmr/KFCreport2025_P13-30.pdf" target="_blank">COMMUNICATION REPORT 2025 P13-30「価値創造の基盤」</a></li>
+<li><a href="https://japan.kfc.co.jp/cmr/KFCreport2023_ALL.pdf" target="_blank">COMMUNICATION REPORT 2023</a></li>
+<li><a href="https://japan.kfc.co.jp/news_release/8105" target="_blank">REPORT 2025 発行のお知らせ</a></li>
+<li><a href="https://finance-frontend-pc-dist.west.edge.storage-yahoo.jp/disclosure/20240213/20240119516997.pdf" target="_blank">2024年2月13日付 組織変更・人事異動のお知らせ TDnet PDF</a></li>
+<li><a href="https://japan.kfc.co.jp/ir/library" target="_blank">日本KFC IRライブラリー</a></li>
+</ul>
+</div>
+
+<div class="sources-block">
+<h4>📰 KFC公式プレスリリース</h4>
+<ul>
+<li><a href="https://japan.kfc.co.jp/news_release/8129" target="_blank">KFC : THE NEXT CHAPTER 発表会（2026/3/9）</a></li>
+<li><a href="https://japan.kfc.co.jp/news_release/8128" target="_blank">大幅ブランドリニューアル</a></li>
+<li><a href="https://japan.kfc.co.jp/news_release/8140" target="_blank">次世代モデル店舗オープン（2026/4/3）</a></li>
+<li><a href="https://japan.kfc.co.jp/news_release/8136" target="_blank">ちゅる〜りぃ発売（2026/4/8）</a></li>
+<li><a href="https://japan.kfc.co.jp/news_release/8133" target="_blank">鶏竜田バーガー復活（2026/3/25）</a></li>
+<li><a href="https://japan.kfc.co.jp/news_release/8126" target="_blank">オリジナルチキンバーガーズ（2026/3/18）</a></li>
+</ul>
+</div>
+
+<div class="sources-block">
+<h4>📊 経営・買収・組織</h4>
+<ul>
+<li><a href="https://www.mitsubishicorp.com/jp/ja/news/release/2024/0000053875.html" target="_blank">三菱商事：日本KFC HD株式売却（2024/5/20）</a></li>
+<li><a href="https://www.nikkei.com/article/DGXZQOUC2021I0Q4A520C2000000/" target="_blank">日経：カーライル買収1,300億円</a></li>
+<li><a href="https://www.nikkei.com/article/DGXZQOUC238EZ0T21C24A0000000/" target="_blank">日経：カーライル「出店候補1,000カ所」</a></li>
+<li><a href="https://www.nikkei.com/article/DGXZQOUC301I20Q5A131C2000000/" target="_blank">日経：遠藤社長「バーガーとチキン半々」</a></li>
+<li><a href="https://www.nikkei.com/article/DGXZQOUC0694J0W6A300C2000000/" target="_blank">日経：イートイン比率4割へ</a></li>
+<li><a href="https://www.ryutsuu.biz/strategy/s030941.html" target="_blank">流通ニュース：2030年1,700店舗</a></li>
+<li><a href="https://www.ryutsuu.biz/strategy/s040149.html" target="_blank">流通ニュース：名嶋専務社長昇格</a></li>
+<li><a href="https://toyokeizai.net/articles/-/759416" target="_blank">東洋経済：KFCはどう変わる</a></li>
+<li><a href="https://www.ssnp.co.jp/foodservice/664991/" target="_blank">食品産業新聞：第二創業</a></li>
+<li><a href="https://www.ssnp.co.jp/foodservice/671995/" target="_blank">食品産業新聞：次世代店</a></li>
+<li><a href="https://www.marr.jp/genre/study/marr_report/entry/53646" target="_blank">M&A総合研究所：カーライル戦略</a></li>
+<li><a href="https://s.srdb.jp/9873/content-1-2.html" target="_blank">役員選任理由（野村氏）</a></li>
+<li><a href="https://j-lic.com/companies/9873/directors" target="_blank">役員一覧</a></li>
+<li><a href="https://irbank.net/E03157/officer?m=%E9%87%8E%E6%9D%91%E8%81%96" target="_blank">野村聖氏 役員履歴（IRBANK）</a></li>
+</ul>
+</div>
+
+<div class="sources-block">
+<h4>👥 商品開発部メンバー</h4>
+<ul>
+<li><a href="https://gourmet.watch.impress.co.jp/docs/interview/1618611.html" target="_blank">グルメWatch とろ〜り月見（神尾様・津野氏）2024/8/29</a></li>
+<li><a href="https://gourmet.watch.impress.co.jp/docs/interview/1526672.html" target="_blank">グルメWatch 2023月見（五十嵐氏）</a></li>
+<li><a href="https://gourmet.watch.impress.co.jp/docs/interview/2042627.html" target="_blank">グルメWatch 2025月見（五十嵐氏）</a></li>
+<li><a href="https://job.kfc.co.jp/rec/new/interview/interview05/" target="_blank">KFC公式採用 田代部長インタビュー</a></li>
+<li><a href="https://note-kfc.kfc.co.jp/n/nf422f6467a7d" target="_blank">KFC公式note：チーズの限界点（津野氏）</a></li>
+<li><a href="https://note-kfc.kfc.co.jp/n/n724cfb9c11ff" target="_blank">KFC公式note：月見和風チキンカツバーガー（五十嵐氏）</a></li>
+<li><a href="https://note-kfc.kfc.co.jp/n/n6699dc03c8c4" target="_blank">KFC公式note：まるかじりケンタ（矢代氏）／カーネルクランチポテト（村井氏）</a></li>
+<li><a href="https://www.tbs.co.jp/jobtune/archive/202412281/" target="_blank">TBSジョブチューン 田代部長出演（2024/12）</a></li>
+<li><a href="https://gakumado.mynavi.jp/gmd/articles/83528" target="_blank">マイナビ：鶏竜田バーガー（五十嵐氏）</a></li>
+<li><a href="https://www.countand1.com/2023/08/kfc-karakuchi-fillet-burger-customer-setting.html" target="_blank">Count&1：辛口チキンフィレバーガー（田代氏）</a></li>
+</ul>
+</div>
+
+</section>
+
+<div class="footer">
+マルイ物産株式会社 ／ 神戸 慧士 ／ 2026/5/10 作成<br>
+事実・公開情報・一次情報をもとに作成。
+</div>
+
+</div>
+</body>
+</html>
